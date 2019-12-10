@@ -4,16 +4,41 @@ import static java.lang.Boolean.FALSE;
 
 public class Animal {
     private String name;
-    private int count;
-    //private Boolean sleep;
-    //private Time clean;
-    //private Boolean hungry;
+    private Integer count;
+    private Boolean sleep;
+    private Boolean clean;
+    private Boolean hungry;
 
     public Animal() {  }
 
-    public Animal(String name, int count) {
+    public Animal(String name, Integer count, Boolean sleep, Boolean clean,Boolean hungry) {
         this.setName(name);
         this.setCount(count);
+        this.setSleep(sleep);
+        this.setClean(clean);
+        this.setHungry(hungry);
+    }
+
+    public Boolean getHungry() {
+        return hungry;
+    }
+
+    public void setHungry(Boolean hungry) {
+        this.hungry = hungry;
+    }
+
+    public Boolean getClean() {
+        return clean;
+    }
+    public void setClean(Boolean clean) {
+        this.clean = clean;
+    }
+
+    public Boolean getSleep() {
+        return sleep;
+    }
+    public void setSleep(Boolean sleep) {
+        this.sleep = sleep;
     }
 
     public String getName() {
@@ -28,7 +53,7 @@ public class Animal {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(Integer count) {
         this.count = count;
     }
 
@@ -37,6 +62,9 @@ public class Animal {
         return "Animal{" +
                 "name=" + name +
                 ", count='" + count + '\'' +
+                ", sleep='" + sleep + '\'' +
+                ", clean='" + clean + '\'' +
+                ", hungry='" + hungry + '\'' +
                 '}';
     }
 }

@@ -2,6 +2,8 @@ package illusivezoo;
 
 import java.util.ArrayList;
 import java.util.List;
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 
 public class ZooMockedData {
     //list of blog posts
@@ -18,13 +20,13 @@ public class ZooMockedData {
 
     public ZooMockedData(){
         animals = new ArrayList<Animal>();
-        animals.add(new Animal("Lion", 7));
-        animals.add(new Animal("Monkey", 20));
-        animals.add(new Animal("Zebra", 10));
-        animals.add(new Animal("Turtle", 9));
-        animals.add(new Animal("Snake", 20));
-        animals.add(new Animal("Elefant", 15));
-        animals.add(new Animal("Giraffe", 6));
+        animals.add(new Animal("Lion", 7, FALSE, TRUE, TRUE));
+        animals.add(new Animal("Monkey", 7, FALSE, TRUE, TRUE));
+        animals.add(new Animal("Zebra", 7, FALSE, TRUE, TRUE));
+        animals.add(new Animal("Turtle", 7, FALSE, TRUE, TRUE));
+        animals.add(new Animal("Snake", 7, FALSE, TRUE, TRUE));
+        animals.add(new Animal("Elefant", 7, FALSE, TRUE, TRUE));
+        animals.add(new Animal("Giraffe", 7, FALSE, TRUE, TRUE));
     }
 
     // return all animals
@@ -39,10 +41,11 @@ public class ZooMockedData {
                 return b;
             }
         }
+        System.out.println("No animals in Illusive Zoo matches" + searchName);
         return null;
     }
 
-    // search blog by text
+    // search animal by text
     public List<Animal> searchAnimals(String searchTerm) {
         List<Animal> searchedAnimals = new ArrayList<Animal>();
         for(Animal b: animals) {
@@ -50,30 +53,40 @@ public class ZooMockedData {
                 searchedAnimals.add(b);
             }
         }
-
+        System.out.println("Found " + searchedAnimals.size() +" animals in Illusive Zoo that matches " + searchTerm);
         return searchedAnimals;
     }
 
     // create animal
-    public Animal createAnimal(String name, int count) {
-        Animal newAnimal = new Animal(name, count);
+    public Animal createAnimal(String name, Integer count) {
+        Animal newAnimal = new Animal(name, count, FALSE, TRUE, TRUE);
         animals.add(newAnimal);
         return newAnimal;
     }
 
     // update blog
-    public Animal updateAnimal(String name, int count) {
+    public Animal updateAnimal(String name, Integer count, Boolean sleep, Boolean clean, Boolean hungry) {
         for(Animal b: animals) {
-            if(b.getName() == name) {
+            if(b.getName().toLowerCase().equals(name.toLowerCase())) {
                 int animalIndex = animals.indexOf(b);
                 b.setName(name);
-                b.setCount(count);
+                if (count != null) {
+                    b.setCount(count);
+                }
+                if (sleep != null) {
+                    b.setSleep(sleep);
+                }
+                if (clean != null) {
+                    b.setClean(clean);
+                }
+                if (hungry != null) {
+                    b.setHungry(hungry);
+                }
                 animals.set(animalIndex, b);
                 return b;
             }
-
         }
-
+        System.out.println("No "+ name +"s in Illusive Zoo");
         return null;
     }
 
