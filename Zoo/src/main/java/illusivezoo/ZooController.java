@@ -3,7 +3,6 @@ package illusivezoo;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.constraints.Null;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +30,10 @@ public class ZooController {
     public Animal create(@RequestBody Map<String, String> body){
         String name = body.get("name");
         int count =  Integer.parseInt(body.get("count"));
-        return zooMockedData.createAnimal(name, count);
+        Boolean animalSleep = (body.get("sleep")== null) ? null : Boolean.parseBoolean(body.get("sleep"));
+        Boolean animalClean = (body.get("clean")== null) ? null : Boolean.parseBoolean(body.get("clean"));
+        Boolean animalHungry = (body.get("hungry")== null) ? null : Boolean.parseBoolean(body.get("hungry"));
+        return zooMockedData.createAnimal(name, count, animalSleep, animalClean, animalHungry);
     }
 
     @PutMapping("/animal/{name}")

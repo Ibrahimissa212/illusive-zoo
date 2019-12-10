@@ -58,8 +58,8 @@ public class ZooMockedData {
     }
 
     // create animal
-    public Animal createAnimal(String name, Integer count) {
-        Animal newAnimal = new Animal(name, count, FALSE, TRUE, TRUE);
+    public Animal createAnimal(String name, Integer count, Boolean sleep, Boolean clean,Boolean hungry) {
+        Animal newAnimal = new Animal(name, count, sleep, clean, hungry);
         animals.add(newAnimal);
         return newAnimal;
     }
